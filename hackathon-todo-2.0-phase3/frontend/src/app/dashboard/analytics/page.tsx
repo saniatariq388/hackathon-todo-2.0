@@ -1,6 +1,6 @@
 'use client';
 
-import { BarChart3, TrendingUp, Calendar, CheckCircle, Clock, AlertTriangle, ArrowUp, ArrowDown, Minus } from 'lucide-react';
+import { BarChart3, TrendingUp, CheckCircle, Clock, ArrowUp, ArrowDown, Minus } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Sidebar } from '@/components/Sidebar';
@@ -44,7 +44,7 @@ export default function AnalyticsPage() {
       setTasks(response.data);
     } catch (error) {
       console.error('Failed to fetch tasks', error);
-      if ((error as any).response?.status === 401) {
+      if (error && typeof error === 'object' && 'response' in error && (error as any).response?.status === 401) {
         router.push('/login');
       }
     } finally {

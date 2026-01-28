@@ -33,9 +33,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       reply: data.response,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { error: "Chat API failed", detail: err.message },
+      { error: "Chat API failed", detail: errorMessage },
       { status: 500 }
     );
   }

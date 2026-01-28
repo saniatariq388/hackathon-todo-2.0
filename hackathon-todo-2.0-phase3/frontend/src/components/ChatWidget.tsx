@@ -114,13 +114,13 @@ export default function ChatWidget() {
                         onClick={() => setInput("Add a task to check emails")}
                         className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-full border border-gray-600 transition-colors"
                     >
-                        "Add a task to check emails"
+                        &quot;Add a task to check emails&quot;
                     </button>
                     <button
                          onClick={() => setInput("Show my pending tasks")}
                          className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-full border border-gray-600 transition-colors"
                     >
-                        "Show my pending tasks"
+                        &quot;Show my pending tasks&quot;
                     </button>
                 </div>
               </div>
