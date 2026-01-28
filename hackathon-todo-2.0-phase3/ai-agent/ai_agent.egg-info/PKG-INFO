@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: ai_agent
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.127.1
+Requires-Dist: httpx>=0.28.1
+Requires-Dist: openai-agents>=0.6.4
+Requires-Dist: openai-agents-mcp>=0.0.8
+Requires-Dist: python-dotenv>=1.2.1
+Requires-Dist: uvicorn>=0.40.0
+
+# AI Agent for Todo Application
+
+This is the AI agent that uses the Model Context Protocol (MCP) to interact with the todo application backend. It provides a natural language interface for managing tasks.
+
+## Features
+
+- Natural language task creation
+- Task listing and management
+- Task updates and deletions
+- Integration with the MCP server for backend operations
+
+## API
+
+The agent exposes a `/chat` endpoint that accepts a message and returns an AI-generated response. The endpoint expects a Bearer token for authentication.

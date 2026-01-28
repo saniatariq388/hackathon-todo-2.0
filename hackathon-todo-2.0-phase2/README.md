@@ -1,0 +1,117 @@
+# Hackathon Todo 2.0 - Phase 2 Web Application
+
+A full-stack web application that transforms the console-based todo system into a modern multi-user web application with persistent storage and authentication.
+
+## Features
+
+- **User Authentication**: Secure login and registration using Better Auth
+- **Task Management**: Create, read, update, delete, and mark tasks as complete
+- **User Isolation**: Each user sees only their own tasks
+- **Persistent Storage**: Tasks saved in Neon Serverless PostgreSQL database
+- **Responsive UI**: Modern interface built with Next.js and Tailwind CSS
+
+## Tech Stack
+
+- **Frontend**: Next.js 15+, React, Tailwind CSS
+- **Backend**: Python FastAPI
+- **Database**: Neon Serverless PostgreSQL
+- **ORM**: SQLModel
+- **Authentication**: Better Auth with JWT
+- **UI Icons**: Lucide React
+
+## Architecture
+
+The application follows a monorepo structure:
+
+```
+├── backend/              # FastAPI backend
+│   ├── api/              # API routes
+│   ├── core/             # Configuration and security
+│   ├── models/           # SQLModel definitions
+│   └── main.py           # Application entry point
+├── frontend/             # Next.js frontend
+│   ├── app/              # App Router pages
+│   ├── components/       # React components
+│   └── lib/              # Shared utilities
+└── specs/                # Project specifications
+    └── phase2-web/       # Phase 2 specifications
+```
+
+## API Endpoints
+
+- `GET /api/v1/tasks` - Retrieve all tasks for current user
+- `POST /api/v1/tasks` - Create a new task
+- `GET /api/v1/tasks/{id}` - Get specific task details
+- `PUT /api/v1/tasks/{id}` - Update a task
+- `DELETE /api/v1/tasks/{id}` - Delete a task
+- `PATCH /api/v1/tasks/{id}/toggle` - Toggle task completion status
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js 18+
+- Python 3.11+
+- Neon PostgreSQL account
+
+### Backend Setup
+1. Navigate to the backend directory: `cd backend`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Set up environment variables in `.env`:
+   ```
+   DATABASE_URL=your_neon_database_url
+   BETTER_AUTH_SECRET=your_auth_secret
+   ```
+4. Run the application: `python main.py`
+
+### Frontend Setup
+1. Navigate to the frontend directory: `cd frontend`
+2. Install dependencies: `npm install`
+3. Set up environment variables in `.env.local`:
+   ```
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   DATABASE_URL=your_neon_database_url
+   BETTER_AUTH_SECRET=your_auth_secret
+   ```
+4. Run the development server: `npm run dev`
+
+## Key Features
+
+### Authentication
+- Secure user registration and login
+- JWT-based session management
+- Automatic redirection to login when session expires
+
+### Task Management
+- Add new tasks with titles
+- View all your tasks in a clean interface
+- Edit task titles
+- Mark tasks as complete/incomplete
+- Delete tasks
+- Responsive design works on all device sizes
+
+### Security
+- User data isolation (users only see their own tasks)
+- JWT token verification on all protected endpoints
+- Input validation and sanitization
+
+## Database Schema
+
+### User Model
+- `id`: UUID (Primary Key)
+- `email`: String (Unique)
+- `name`: String (Optional)
+
+### Task Model
+- `id`: Integer (Primary Key, Autoincrement)
+- `title`: String (Required)
+- `description`: String (Optional)
+- `status`: String (Default: "pending")
+- `user_id`: UUID (Foreign Key to `User.id`)
+
+## Development
+
+This project was built following spec-driven development principles with detailed specifications in the `specs/` directory. All features were implemented according to the Phase 2 specification with proper separation of concerns between frontend and backend.
+
+## License
+
+This project is part of a hackathon and is provided as-is for demonstration purposes.
